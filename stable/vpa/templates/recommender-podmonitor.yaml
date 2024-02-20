@@ -15,7 +15,7 @@ metadata:
 spec:
   namespaceSelector:
     matchNames:
-    - {{ .Release.Namespace }}
+    - {{ include "vpa.namespace" . }}
   podMetricsEndpoints:
   - interval: 30s
     path: /metrics

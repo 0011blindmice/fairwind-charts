@@ -10,6 +10,8 @@ priorityClassName: ""
 nameOverride: ""
 # fullnameOverride -- A template override for the fullname
 fullnameOverride: ""
+# namespaceOverride -- A template override for the namespace
+namespaceOverride: ""
 # podLabels -- Labels to add to all pods
 podLabels: {}
 rbac:

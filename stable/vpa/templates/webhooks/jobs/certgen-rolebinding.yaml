@@ -17,5 +17,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.fullname" . }}-admission-certgen
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}

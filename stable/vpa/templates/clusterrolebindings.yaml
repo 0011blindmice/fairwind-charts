@@ -13,7 +13,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-recommender
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -26,7 +26,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-recommender
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -39,7 +39,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-recommender
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}
 
 {{- if .Values.updater.enabled }}
@@ -55,7 +55,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-updater
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -68,7 +68,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-updater
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}
 
 {{- if or .Values.recommender.enabled .Values.updater.enabled }}
@@ -85,12 +85,12 @@ subjects:
 {{- if .Values.recommender.enabled }}
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-recommender
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}
 {{- if .Values.updater.enabled }}
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-updater
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}
 {{- end }}
 
@@ -108,17 +108,17 @@ subjects:
 {{- if .Values.recommender.enabled }}
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-recommender
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}
 {{- if .Values.admissionController.enabled}}
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-admission-controller
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}
 {{- if .Values.updater.enabled }}
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-updater
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}
 {{- end }}
 

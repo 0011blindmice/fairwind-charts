@@ -63,5 +63,5 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.serviceAccountName" . }}-admission-controller
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 {{- end }}

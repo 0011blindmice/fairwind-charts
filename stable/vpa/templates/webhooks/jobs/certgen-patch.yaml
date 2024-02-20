@@ -30,7 +30,7 @@ spec:
           args:
             - patch
             - --webhook-name={{ include "vpa.fullname" . }}-webhook-config
-            - --namespace={{ .Release.Namespace }}
+            - --namespace={{ include "vpa.namespace" . }}
             - --secret-name={{ include "vpa.webhook.secret" . }}
             - --patch-validating=false
             - --log-level=debug

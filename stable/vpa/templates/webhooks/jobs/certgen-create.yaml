@@ -30,8 +30,8 @@ spec:
           image: {{ printf "%s:%s" .Values.admissionController.certGen.image.repository .Values.admissionController.certGen.image.tag }}
           args:
             - create
-            - --host={{ include "vpa.fullname" . }}-webhook,{{ include "vpa.fullname" . }}-webhook.{{ .Release.Namespace }}.svc
-            - --namespace={{ .Release.Namespace }}
+            - --host={{ include "vpa.fullname" . }}-webhook,{{ include "vpa.fullname" . }}-webhook.{{ include "vpa.namespace" . }}.svc
+            - --namespace={{ include "vpa.namespace" . }}
             - --secret-name={{ include "vpa.webhook.secret" . }}
           resources:
             {{- toYaml .Values.admissionController.certGen.resources | nindent 12 }}

@@ -28,7 +28,7 @@ spec:
           #!/bin/bash
 
           set -ex
-          cat <<EOF | kubectl -n {{ .Release.Namespace }} apply -f -
+          cat <<EOF | kubectl -n {{ include "vpa.namespace" . }} apply -f -
           apiVersion: autoscaling.k8s.io/v1
           kind: VerticalPodAutoscaler
           metadata:
@@ -42,6 +42,6 @@ spec:
               updateMode: "Off"
           EOF
 
-          kubectl -n {{ .Release.Namespace }} describe vpa test-vpa
-          kubectl -n {{ .Release.Namespace }} delete vpa test-vpa
+          kubectl -n {{ include "vpa.namespace" . }} describe vpa test-vpa
+          kubectl -n {{ include "vpa.namespace" . }} delete vpa test-vpa
   restartPolicy: Never

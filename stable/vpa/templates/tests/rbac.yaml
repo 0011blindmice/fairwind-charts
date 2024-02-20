@@ -60,7 +60,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.fullname" . }}-test
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -119,4 +119,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: {{ include "vpa.fullname" . }}-test
-    namespace: {{ .Release.Namespace }}
+    namespace: {{ include "vpa.namespace" . }}
